@@ -216,4 +216,13 @@ describe("フッタ規約", () => {
       expect(existsSync(route), `${href} の実体が無い`).toBe(true);
     }
   });
+
+  it("歩き方と設計図が別々の先を指している(同じ所へ二重に張らない)", () => {
+    const src = readFileSync("src/app/layout.tsx", "utf8");
+    const guide = src.match(/guide:\s*"([^"]+)"/)?.[1];
+    const blueprint = src.match(/blueprint:\s*"([^"]+)"/)?.[1];
+    expect(guide, "歩き方の行き先が無い").toBeTruthy();
+    expect(blueprint, "設計図の行き先が無い").toBeTruthy();
+    expect(guide).not.toBe(blueprint);
+  });
 });

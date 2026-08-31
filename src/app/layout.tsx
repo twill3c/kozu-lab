@@ -11,14 +11,11 @@ export const metadata: Metadata = {
 // MIT License ・ © ・ GitHub ・ 歩き方 ・ 設計図 ・ App Menu の 6 項目をこの並びで、
 // position: fixed で常時表示する。**並びと項目数を揃えるのであって、文言は各アプリのものを残す。**
 //
-// 歩き方と設計図はまだ書いていない。**存在しない先へリンクしない** ——
-// 代わりに、この道具でその役目を果たしている /about を指す。
-// 別に書いたら、ここを差し替える。
 const FOOTER = {
   license: "https://github.com/twill3c/kozu-lab/blob/main/LICENSE",
   repository: "https://github.com/twill3c/kozu-lab",
-  guide: "/about/",
-  blueprint: "/about/",
+  guide: "https://claude.ai/code/artifact/fe73e272-b41a-4135-99cb-2e641ec76f7b",
+  blueprint: "https://claude.ai/code/artifact/1add0dc5-5967-431d-9f61-ede87f234521",
   appMenu: "https://app-menu-amber.vercel.app/",
 };
 
