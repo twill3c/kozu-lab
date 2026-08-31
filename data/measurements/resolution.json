@@ -1,0 +1,239 @@
+{
+ "question": "SPEC §3.4: web-large の短辺(実測 297–590 px)で Hough に足りるか",
+ "method": "標本枠の先頭 12 件について、web-large と original(短辺 1024 へ縮小)に同じ検出器を当て、検出直線の一致率(Δθ ≤ 1°、Δρ ≤ 短辺の 1 %)と、三分割格子に対する z の差を測る。帰無は 2,000 枚・シード 20260831。",
+ "measuredAt": "2026-08-31",
+ "n": 12,
+ "medianMatchRate": 0.9166666666666667,
+ "medianAbsDeltaZ": 0.33700584408005707,
+ "maxAbsDeltaZ": 1.0300150188613557,
+ "rows": [
+  {
+   "objectID": 435581,
+   "title": "Portrait of a Young Man",
+   "webLarge": {
+    "short": 473,
+    "lines": 5,
+    "points": 2000,
+    "z": -0.3052780851959211
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 15,
+    "points": 2000,
+    "z": -0.41130970501317493
+   },
+   "matchedLines": 5,
+   "matchRate": 1,
+   "deltaZ": -0.10603161981725384
+  },
+  {
+   "objectID": 435596,
+   "title": "Old Woman in an Armchair",
+   "webLarge": {
+    "short": 486,
+    "lines": 5,
+    "points": 2000,
+    "z": -0.3976332219067974
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 7,
+    "points": 2000,
+    "z": -0.3931657199305837
+   },
+   "matchedLines": 5,
+   "matchRate": 1,
+   "deltaZ": 0.004467501976213706
+  },
+  {
+   "objectID": 435616,
+   "title": "Saint Dominic Resuscitating Napoleone Orsini",
+   "webLarge": {
+    "short": 488,
+    "lines": 32,
+    "points": 2000,
+    "z": -0.9948172533872207
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 32,
+    "points": 2000,
+    "z": -1.3572355207684397
+   },
+   "matchedLines": 19,
+   "matchRate": 0.59375,
+   "deltaZ": -0.36241826738121896
+  },
+  {
+   "objectID": 435618,
+   "title": "The Trinity",
+   "webLarge": {
+    "short": 370,
+    "lines": 32,
+    "points": 2000,
+    "z": -0.02394283518011468
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 32,
+    "points": 2000,
+    "z": -0.4381330224934167
+   },
+   "matchedLines": 16,
+   "matchRate": 0.5,
+   "deltaZ": -0.414190187313302
+  },
+  {
+   "objectID": 435642,
+   "title": "Madonna and Child with Saints",
+   "webLarge": {
+    "short": 381,
+    "lines": 3,
+    "points": 2000,
+    "z": 0.9426034129171268
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 7,
+    "points": 2000,
+    "z": 0.28255060689112205
+   },
+   "matchedLines": 3,
+   "matchRate": 1,
+   "deltaZ": -0.6600528060260047
+  },
+  {
+   "objectID": 435650,
+   "title": "Madame Philippe Panon Desbassayns de Richemont (Jeanne Eglé Mourgue, 1778–1855) and Her Son, Eugène (1800–1859)",
+   "webLarge": {
+    "short": 485,
+    "lines": 6,
+    "points": 2000,
+    "z": 0.6573646422469624
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 6,
+    "points": 2000,
+    "z": 0.3414584278514241
+   },
+   "matchedLines": 5,
+   "matchRate": 0.8333333333333334,
+   "deltaZ": -0.31590621439553834
+  },
+  {
+   "objectID": 435657,
+   "title": "The Twelve Apostles: Saints Bartholomew, Andrew, Matthew, James the Greater, Thaddeus, Philip, James the Lesser, Simon, Peter, Paul, Thomas, and John",
+   "webLarge": {
+    "short": 304,
+    "lines": 32,
+    "points": 2000,
+    "z": -0.7000451361762194
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 32,
+    "points": 2000,
+    "z": 0.3299698826851363
+   },
+   "matchedLines": 10,
+   "matchRate": 0.3125,
+   "deltaZ": 1.0300150188613557
+  },
+  {
+   "objectID": 435670,
+   "title": "A Young Woman and a Cavalier",
+   "webLarge": {
+    "short": 564,
+    "lines": 7,
+    "points": 2000,
+    "z": 0.6065760974870332
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 8,
+    "points": 2000,
+    "z": 0.24847062372245748
+   },
+   "matchedLines": 7,
+   "matchRate": 1,
+   "deltaZ": -0.35810547376457574
+  },
+  {
+   "objectID": 435671,
+   "title": "The Angel Appearing to Zacharias",
+   "webLarge": {
+    "short": 422,
+    "lines": 28,
+    "points": 2000,
+    "z": -0.17974289865614915
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 32,
+    "points": 2000,
+    "z": -0.21100718878579616
+   },
+   "matchedLines": 10,
+   "matchRate": 0.35714285714285715,
+   "deltaZ": -0.031264290129647015
+  },
+  {
+   "objectID": 435683,
+   "title": "Island of the Dead",
+   "webLarge": {
+    "short": 368,
+    "lines": 3,
+    "points": 2000,
+    "z": -0.48327664092009853
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 3,
+    "points": 2000,
+    "z": -0.3595172652270039
+   },
+   "matchedLines": 3,
+   "matchRate": 1,
+   "deltaZ": 0.12375937569309464
+  },
+  {
+   "objectID": 435702,
+   "title": "The Horse Fair",
+   "webLarge": {
+    "short": 306,
+    "lines": 11,
+    "points": 2000,
+    "z": -0.4987021878404519
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 20,
+    "points": 2000,
+    "z": -0.7292829827712946
+   },
+   "matchedLines": 11,
+   "matchRate": 1,
+   "deltaZ": -0.23058079493084266
+  },
+  {
+   "objectID": 435708,
+   "title": "Roman Girl at a Fountain",
+   "webLarge": {
+    "short": 374,
+    "lines": 32,
+    "points": 2000,
+    "z": 1.2653632342112309
+   },
+   "original1024": {
+    "short": 1024,
+    "lines": 20,
+    "points": 2000,
+    "z": 0.7634870475744916
+   },
+   "matchedLines": 10,
+   "matchRate": 0.3125,
+   "deltaZ": -0.5018761866367393
+  }
+ ]
+}

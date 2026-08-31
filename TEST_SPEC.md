@@ -55,7 +55,9 @@
 | `tests/fixtures/rust_oracle.json` | **Rust 実装が書き出す固定フィクスチャ**(`cargo run --release --bin oracle`)。入力(エッジ座標・角度表)も出力(投票・極大・raw/z)も f64 のビットパターンで持つ。**97×73 の奇数寸法**にしてあるのは、偶数だと dx が常に整数になり丸めの流儀を区別できないため(HC-070) | 二実装照合 | G-06a / G-06b / G-06c |
 | `tests/fixtures/brokenHough.ts` | **自作。**投票累積を θ ビン 1 本に潰した版。**発火する性質(真値の θ が 0 から離れていること)を対照側で表明してある**(HC-070) | 陽性対照(検査が働くこと) | G-02 |
 | `fx/saliency/` | **外部。**公開視線計測データセット(採用可否と出典 URL・取得日は L5 で確定) | 外部権威 | G-目玉2 |
-| `data/frames/*.json` | **実測。**`MetObjects.csv` / NGA CSV からの層別抽出。抽出規則と乱数シードを同ファイルに刻む | 標本枠 | G-09 |
+| `data/frames/met-ep-catalog.json` | **実測。**Met dept 11 の **全 2,644 件のメタデータ**。枠の全体が分かっていないと抽出の偏りを確かめられない | 枠の全体 | F-14 |
+| `data/frames/met-ep.json` | **実測。**適格条件(PD / 画像あり / classification=Paintings)で 2,029 件に絞り、世紀の層別・シード 20260831 で 200 件を抽出。**規則と取得日を同ファイルに刻む** | 標本枠 | F-14 / G-09 |
+| `data/measurements/resolution.json` | **実測。**web-large と original(短辺 1024)の比較 12 件。§3.4 の決着の根拠 | 測定 | SPEC §3.4 |
 
 **合成フィクスチャは画像を配らず、生成器と引数を配る**(N-03 と同じ理由。再現性も上がる)。
 生成器は `tests/fixtures/gen_*.ts` に置き、決定論であること(G-04)を自分自身のテストで確かめる。
