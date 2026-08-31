@@ -23,8 +23,9 @@ export type AccumulateCtx = {
 export type AccumulateFn = (acc: Int32Array, ctx: AccumulateCtx, x: number, y: number) => void;
 
 export const defaultAccumulate: AccumulateFn = (acc, ctx, x, y) => {
-  const dx = x - ctx.cx;
-  const dy = y - ctx.cy;
+  // 画素中心を使う(image.ts の toCenter と同じ規約)
+  const dx = x + 0.5 - ctx.cx;
+  const dy = y + 0.5 - ctx.cy;
   const half = ctx.rhoSteps >> 1;
   for (let t = 0; t < ctx.thetaSteps; t++) {
     const rho = dx * ctx.cosT[t] + dy * ctx.sinT[t];
@@ -48,6 +49,14 @@ export type DetectOptions = {
   maxLines: number;
   /** 差し替え可能な投票関数。陽性対照(壊した版)を差し込む口(T-004) */
   accumulate?: AccumulateFn;
+  /**
+   * 角度表を外から与える。**二実装照合で使う**(G-06a)。
+   *
+   * cos/sin は Rust と V8 で最終 ULP が食い違う(実測 2026-08-31: 44/2000・50/2000)。
+   * 自前で計算したままだと「アルゴリズムの差」と「libm の差」が混ざるので、
+   * 照合のときだけ同じ表を両実装へ渡す。実運用ではこの口を使わない。
+   */
+  angleTable?: { cos: Float64Array; sin: Float64Array };
 };
 
 // 既定値は実測(2026-08-31)で決めた。
@@ -86,12 +95,24 @@ export function houghTransform(
   const cy = height / 2;
   const R = Math.hypot(cx, cy);
   const rhoSteps = 2 * Math.ceil(R * opts.rhoScale) + 1;
-  const cosT = new Float64Array(opts.thetaSteps);
-  const sinT = new Float64Array(opts.thetaSteps);
-  for (let t = 0; t < opts.thetaSteps; t++) {
-    const th = (t * Math.PI) / opts.thetaSteps;
-    cosT[t] = Math.cos(th);
-    sinT[t] = Math.sin(th);
+  let cosT: Float64Array;
+  let sinT: Float64Array;
+  if (opts.angleTable) {
+    if (opts.angleTable.cos.length !== opts.thetaSteps || opts.angleTable.sin.length !== opts.thetaSteps) {
+      throw new Error(
+        `角度表の長さ(${opts.angleTable.cos.length}/${opts.angleTable.sin.length})が thetaSteps=${opts.thetaSteps} と合わない`,
+      );
+    }
+    cosT = opts.angleTable.cos;
+    sinT = opts.angleTable.sin;
+  } else {
+    cosT = new Float64Array(opts.thetaSteps);
+    sinT = new Float64Array(opts.thetaSteps);
+    for (let t = 0; t < opts.thetaSteps; t++) {
+      const th = (t * Math.PI) / opts.thetaSteps;
+      cosT[t] = Math.cos(th);
+      sinT[t] = Math.sin(th);
+    }
   }
   const ctx: AccumulateCtx = {
     cx,

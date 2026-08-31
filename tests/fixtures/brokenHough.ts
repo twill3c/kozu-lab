@@ -10,8 +10,8 @@ import type { AccumulateFn } from "@/core/hough";
 export const brokenAccumulate: AccumulateFn = (acc, ctx, x, y) => {
   const { cx, cy, rhoSteps, rhoScale, thetaSteps } = ctx;
   if (thetaSteps < 2) throw new Error("陽性対照の前提が崩れている: θ ビンが 2 本未満");
-  const dx = x - cx;
-  const dy = y - cy;
+  const dx = x + 0.5 - cx;
+  const dy = y + 0.5 - cy;
   // θ = 0 の一本だけに投票する(cos0 = 1, sin0 = 0)
   const rho = dx;
   const r = Math.round(rho * rhoScale) + (rhoSteps >> 1);

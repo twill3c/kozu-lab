@@ -36,8 +36,9 @@ describe("T-001 合成線分生成器が引数どおりの (θ, ρ) を描く", 
             const i = (y * W + x) * 4;
             // 背景は白、線は黒。塗られた画素だけを検算する
             if (img.data[i] === 255) continue;
+            // 画素中心を使う(src/core/image.ts の toCenter と同じ規約)
             const d = Math.abs(
-              (x - cx) * Math.cos(theta) + (y - cy) * Math.sin(theta) - rho,
+              (x + 0.5 - cx) * Math.cos(theta) + (y + 0.5 - cy) * Math.sin(theta) - rho,
             );
             expect(d).toBeLessThanOrEqual(0.5);
             checked++;

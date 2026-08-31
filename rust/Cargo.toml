@@ -1,0 +1,17 @@
+[package]
+name = "kozu"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+# 外部依存ゼロ(フリート規約)。wasm-bindgen も使わず、生の wasm を書き出す
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+debug = false

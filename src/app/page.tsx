@@ -11,6 +11,10 @@ export default function Page() {
       </p>
       <h2>① 線を見る + ③ 格子を重ねる</h2>
       <LineStage />
+      <h2>ほかの画面</h2>
+      <p className="note">
+        <a href="/notan/">⑤ ノタン —— 明暗の面と明度重心</a>
+      </p>
     </main>
   );
 }

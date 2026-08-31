@@ -50,3 +50,8 @@ th, td { border-bottom: 1px solid var(--rule); padding: 0.35rem 0.5rem; text-ali
 td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .note { font-size: 0.8rem; color: var(--muted); }
 select, button { font: inherit; padding: 0.25rem 0.5rem; background: var(--panel); color: var(--fg); border: 1px solid var(--rule); }
+
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+.pair figure { margin: 0; }
+.pair figcaption { padding: 0.4rem 0.6rem; }
+a { color: inherit; }

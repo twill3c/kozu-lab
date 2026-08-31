@@ -7,7 +7,7 @@
 // 原点は画像中心。この定義により、塗られた画素は定義上すべて HALF_WIDTH 以内に入る
 // —— T-001 が検算しているのは「塗り方が距離場から外れていないこと」である。
 
-import { createImage, type Line, type RasterImage } from "./image";
+import { createImage, toCenter, type Line, type RasterImage } from "./image";
 import { randNormal, type Rng } from "./rng";
 
 /** 線の太さの半分。T-001 の許容 0.5 の出所 */
@@ -51,9 +51,9 @@ export function drawLines(opts: DrawOptions): RasterImage {
     const ct = lines.map((l) => Math.cos(l.theta));
     const st = lines.map((l) => Math.sin(l.theta));
     for (let y = 0; y < height; y++) {
-      const dy = y - cy;
+      const dy = toCenter(y, height);
       for (let x = 0; x < width; x++) {
-        const dx = x - cx;
+        const dx = toCenter(x, width);
         let side = 0;
         for (let k = 0; k < lines.length; k++) {
           if (dx * ct[k] + dy * st[k] - lines[k].rho > 0) side ^= 1;
@@ -73,9 +73,9 @@ export function drawLines(opts: DrawOptions): RasterImage {
     const ct = Math.cos(l.theta);
     const st = Math.sin(l.theta);
     for (let y = 0; y < height; y++) {
-      const dy = y - cy;
+      const dy = toCenter(y, height);
       for (let x = 0; x < width; x++) {
-        const d = Math.abs((x - cx) * ct + dy * st - l.rho);
+        const d = Math.abs(toCenter(x, width) * ct + dy * st - l.rho);
         if (d > hw) continue;
         const i = (y * width + x) * 4;
         img.data[i] = fg;

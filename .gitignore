@@ -1,10 +1,10 @@
-node_modules/
-.next/
-out/
 *.tsbuildinfo
-next-env.d.ts
+.next/
 .probe/
-__pycache__/
 .pytest_cache/
-rust/target/
+__pycache__/
+next-env.d.ts
+node_modules/
+out/
 pkg/
+rust/target/
