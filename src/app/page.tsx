@@ -1,0 +1,16 @@
+import LineStage from "@/components/LineStage";
+import { SUBJECT_LINE } from "@/core/overlay";
+
+export default function Page() {
+  return (
+    <main>
+      <h1>構図ラボ</h1>
+      <p className="note">
+        名画に構図の格子を重ねる行為そのものを測る。{SUBJECT_LINE.slice(0, 0)}
+        主張は「構図線を見つけること」ではなく、「構図線がいかに容易に見つかってしまうかを測ること」に置く。
+      </p>
+      <h2>① 線を見る + ③ 格子を重ねる</h2>
+      <LineStage />
+    </main>
+  );
+}
