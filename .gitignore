@@ -3,6 +3,7 @@
 .probe/
 .pytest_cache/
 __pycache__/
+data/compare/
 data/points/
 data/raw/
 data/scores/

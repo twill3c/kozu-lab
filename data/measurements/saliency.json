@@ -1,0 +1,18 @@
+{
+ "question": "SPEC §9 / G-目玉2: 顕著性マップは視線を当てるか。当てなければ ⑥ を削る",
+ "source": "Judd, Ehinger, Durand, Torralba (ICCV 2009), MIT WherePeopleLook —— 15 名 × 1,003 枚",
+ "sourceUrl": "https://people.csail.mit.edu/tjudd/WherePeopleLook/",
+ "license": "明示のライセンス文は無い。ページに『publicly available with this paper』と BibTeX の引用依頼があるのみ(取得日 2026-08-31)。再配布はしていない —— 手元で測り、配るのは数だけ",
+ "method": "spectral residual(Hou & Zhang 2007)で 64×64 の顕著性マップを作り、_fixPts 画像から拾った注視点に対して AUC-Judd(順位に基づく定義。同値は 0.5 で数える)を測る。",
+ "caveat": "**標本は自然写真であって絵画ではない。**絵画に当てたときの当たり方は、この数からは分からない。",
+ "measuredAt": "2026-08-31",
+ "threshold": 0.75,
+ "n": 1003,
+ "meanAuc": 0.6937842658719052,
+ "medianAuc": 0.7122140066964285,
+ "minAuc": 0.1785400390625,
+ "maxAuc": 0.9782656715029762,
+ "dropped": 0,
+ "droppedReasons": [],
+ "verdict": "削る"
+}

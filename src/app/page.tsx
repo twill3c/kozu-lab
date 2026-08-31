@@ -18,6 +18,8 @@ export default function Page() {
         <a href="/vanish/">② 消失点 —— 破綻を破綻として返す</a>
         <br />
         <a href="/lab/">④ 帰無仮説の実験室 —— このアプリの主張はここにある</a>
+        <br />
+        <a href="/kurabe/">⑦ 作品くらべ —— 世紀の層で見る</a>
       </p>
     </main>
   );
