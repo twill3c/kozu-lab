@@ -14,6 +14,8 @@ export default function Page() {
       <h2>ほかの画面</h2>
       <p className="note">
         <a href="/notan/">⑤ ノタン —— 明暗の面と明度重心</a>
+        <br />
+        <a href="/vanish/">② 消失点 —— 破綻を破綻として返す</a>
       </p>
     </main>
   );
