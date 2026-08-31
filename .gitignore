@@ -3,7 +3,9 @@
 .probe/
 .pytest_cache/
 __pycache__/
+data/points/
 data/raw/
+data/scores/
 next-env.d.ts
 node_modules/
 out/

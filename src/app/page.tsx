@@ -16,6 +16,8 @@ export default function Page() {
         <a href="/notan/">⑤ ノタン —— 明暗の面と明度重心</a>
         <br />
         <a href="/vanish/">② 消失点 —— 破綻を破綻として返す</a>
+        <br />
+        <a href="/lab/">④ 帰無仮説の実験室 —— このアプリの主張はここにある</a>
       </p>
     </main>
   );
