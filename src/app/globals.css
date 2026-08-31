@@ -55,3 +55,29 @@ select, button { font: inherit; padding: 0.25rem 0.5rem; background: var(--panel
 .pair figure { margin: 0; }
 .pair figcaption { padding: 0.4rem 0.6rem; }
 a { color: inherit; }
+
+/* fleet: fixed footer(koho-lens が正本。6 項目・下部固定) */
+main { padding-bottom: 5.5rem; }
+.site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  border-top: 1px solid var(--rule);
+  background: var(--panel);
+  padding: 0.7rem 1.25rem;
+}
+.site-footer__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1.1rem;
+  align-items: center;
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+.site-footer__inner a { color: var(--muted); text-decoration: none; }
+.site-footer__inner a:hover { text-decoration: underline; }
+.site-footer__copy { color: var(--muted); }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { drawLines, degrade } from "@/core/synth";
 import { detectLines, lineDistance, DEFAULT_DETECT } from "@/core/hough";
 import { normalizeShortSide } from "@/core/resample";
@@ -186,6 +186,34 @@ describe("T-013 主語の一文が全ページに出る", () => {
     for (const p of pages) {
       const src = readFileSync(p, "utf8");
       expect(src, `${p} に主語の一文が無い`).toMatch(/SUBJECT_LINE|Subject/);
+    }
+  });
+});
+
+// フリート共通のフッタ規約(koho-lens が正本)。6 項目・下部固定
+describe("フッタ規約", () => {
+  it("6 項目がこの並びで入っている", () => {
+    const src = readFileSync("src/app/layout.tsx", "utf8");
+    const wanted = ["MIT License", "©", "GitHub", "歩き方", "設計図", "App Menu"];
+    let at = -1;
+    for (const w of wanted) {
+      const i = src.indexOf(w, at + 1);
+      expect(i, `${w} が無いか並びが違う`).toBeGreaterThan(at);
+      at = i;
+    }
+  });
+
+  it("position: fixed で常時表示する", () => {
+    const css = readFileSync("src/app/globals.css", "utf8");
+    expect(css).toMatch(/\.site-footer\s*\{[^}]*position:\s*fixed/);
+  });
+
+  it("**存在しない先へリンクしていない** —— 内部リンクは実在するページだけ", () => {
+    const src = readFileSync("src/app/layout.tsx", "utf8");
+    const internal = [...src.matchAll(/"(\/[a-z-]*\/?)"/g)].map((m) => m[1]);
+    for (const href of internal) {
+      const route = href === "/" ? "src/app/page.tsx" : `src/app${href}page.tsx`;
+      expect(existsSync(route), `${href} の実体が無い`).toBe(true);
     }
   });
 });

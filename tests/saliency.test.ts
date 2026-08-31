@@ -248,3 +248,35 @@ describe("T-403 / T-404 ⑦ の事前計算(SPEC §9.2)", () => {
     expect(removed, "縁の線を 1 本も落としていない —— 判定が働いていない").toBeGreaterThan(0);
   });
 });
+
+describe("F-16 /about が測定と食い違わない", () => {
+  it("σ 依存の測定が実在し、3 段すべて入っている", () => {
+    const f = "src/data/sigma.json";
+    expect(existsSync(f), `${f} が無い。cargo run --release --bin scan_sigma で作る`).toBe(true);
+    const d = JSON.parse(readFileSync(f, "utf8"));
+    expect(d.rows.length).toBe(3);
+    expect(d.n).toBeGreaterThanOrEqual(175);
+    for (const r of d.rows) {
+      expect(r.peakT).toBeGreaterThan(0.05);
+      expect(r.peakT).toBeLessThan(0.95);
+      expect(Object.keys(r.residual).length).toBeGreaterThanOrEqual(5);
+    }
+  });
+
+  it("**σ を振っても頂点が中央から動かない**(/about の主張の根拠)", () => {
+    const d = JSON.parse(readFileSync("src/data/sigma.json", "utf8"));
+    const peaks = d.rows.map((r: { peakT: number }) => r.peakT);
+    console.log(`/about σ 依存 —— 頂点 t: ${peaks.map((p: number) => p.toFixed(3)).join(" / ")}`);
+    for (const p of peaks) expect(Math.abs(p - 0.5)).toBeLessThan(0.1);
+    // 三分割が一貫して最低の部類であること
+    for (const r of d.rows) {
+      expect(r.residual["三分割 1/3"]).toBeLessThan(r.residual["黄金 0.382"]);
+    }
+  });
+
+  it("/about が読む測定ファイルが src/ に揃っている(ビルドで外へ出ない)", () => {
+    for (const f of ["src/data/sigma.json", "src/data/saliency.json", "src/data/scores.json", "src/data/compare.json"]) {
+      expect(existsSync(f), `${f} が無い`).toBe(true);
+    }
+  });
+});

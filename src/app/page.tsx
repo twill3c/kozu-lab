@@ -20,6 +20,8 @@ export default function Page() {
         <a href="/lab/">④ 帰無仮説の実験室 —— このアプリの主張はここにある</a>
         <br />
         <a href="/kurabe/">⑦ 作品くらべ —— 世紀の層で見る</a>
+        <br />
+        <a href="/about/">この道具について —— 二層の開示と、落ちたゲートの記録</a>
       </p>
     </main>
   );
